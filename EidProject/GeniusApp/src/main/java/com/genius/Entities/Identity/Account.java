@@ -7,18 +7,19 @@ public class Account extends BaseEntity {
     private int age;
     private String email;
     private String username;
-    private String password;
+    private String passwordHash;
+    
     public Account(){
 
     }
     // Constructor
-    public Account(String name, int age, String email, String username, String password) {
+    public Account(String name, int age, String email, String username, String passwordHash) {
         super();
         this.name = name;
         this.age = age;
         this.email = email;
         this.username = username;
-        this.password = password;
+        this.passwordHash = passwordHash;
     }
 
     // Getters and Setters
@@ -54,11 +55,11 @@ public class Account extends BaseEntity {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 }

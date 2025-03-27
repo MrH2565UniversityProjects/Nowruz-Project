@@ -59,4 +59,7 @@ public class SongService implements IService<Song>, ISearchableService<Song> {
         }
         return GetAll(Song -> Song.getTitle().toLowerCase().contains(query.toLowerCase()));
     }
+    public List<Song> GetByAlbum(String albumId){
+        return GetAll(song -> song.getAlbumId().equals(albumId));
+    }
 }

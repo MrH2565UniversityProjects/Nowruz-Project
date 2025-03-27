@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataStorage {
-    public List<User> Users = new ArrayList<>();
-    public List<Artist> Artists = new ArrayList<>();
-    public List<Admin> Admins = new ArrayList<>();
+    public List<Account> Accounts = new ArrayList<>();
     public List<FollowingArtists> FollowingArtists = new ArrayList<>();
     public List<Album> Albums = new ArrayList<>();
     public List<Comment> Comments = new ArrayList<>();
