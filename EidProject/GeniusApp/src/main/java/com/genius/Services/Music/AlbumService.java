@@ -59,4 +59,8 @@ public class AlbumService implements IService<Album>, ISearchableService<Album> 
         }
         return GetAll(album -> album.getTitle().toLowerCase().contains(query.toLowerCase()));
     }
+
+    public List<Album> GetByUser(String userId){
+        return GetAll(album-> album.getUserId().equals(userId));
+    }
 }
