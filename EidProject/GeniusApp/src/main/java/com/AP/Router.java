@@ -11,6 +11,8 @@ public class Router {
     private String indexRoute = "Home";
     private static Router instance;
     public static Router getInstance(){
+        if(instance == null)
+            instance = new Router();
         return instance;
     };
     public RouteEntry addRoute(String route, Page page) {
@@ -18,9 +20,7 @@ public class Router {
         routeMap.put(route, entry);
         return entry;
     }
-    public static Router CreateDefault(){
-        return new Router();
-    }
+
     public void navigate(String route,Object... params) {
         RouteEntry entry = routeMap.get(route);
         if (entry == null) {

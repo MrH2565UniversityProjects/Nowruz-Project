@@ -1,13 +1,17 @@
 package com.genius.Entities.Music;
 
+import com.AP.Annotations.UserInput;
 import com.AP.EntityBase;
 
 import java.time.LocalDateTime;
 
 public class Song extends EntityBase {
     private String albumId;
+    @UserInput(label = "Enter the Song title",required = true)
     private String title;
+    @UserInput(label = "Enter the Song lyrics",required = true)
     private String lyrics;
+    @UserInput(label = "Enter the Song release Date",required = true)
     private LocalDateTime releaseDate;
     private int viewsCount;
 

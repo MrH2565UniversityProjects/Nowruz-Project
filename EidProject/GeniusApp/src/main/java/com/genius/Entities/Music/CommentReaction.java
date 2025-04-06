@@ -1,11 +1,13 @@
 package com.genius.Entities.Music;
 
+import com.AP.Annotations.UserInput;
 import com.AP.EntityBase;
 import com.genius.Enums.Reaction;
 
 public class CommentReaction extends EntityBase {
     private String commentId;
     private String userId;
+    @UserInput(label = "Enter your reaction", required = true)
     private Reaction reaction;
 
 

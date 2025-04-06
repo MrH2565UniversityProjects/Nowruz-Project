@@ -1,11 +1,13 @@
 package com.genius.Entities.Music;
 
+import com.AP.Annotations.UserInput;
 import com.AP.EntityBase;
 import com.genius.Enums.EditLyricsSuggestStatus;
 
 public class EditLyricsSuggest extends EntityBase {
     private String userId;
     private String songId;
+    @UserInput(label = "Enter your suggested lyrics", required = true)
     private String lyrics;
     private EditLyricsSuggestStatus editLyricsSuggestStatus;
 

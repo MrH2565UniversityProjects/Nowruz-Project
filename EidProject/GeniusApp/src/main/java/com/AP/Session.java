@@ -5,6 +5,8 @@ import com.AP.Identity.AccountBase;
 public class Session<TAccount extends AccountBase> {
     private static Session<?> instance;
     public static Session<?> getInstance(){
+        if(instance == null)
+            instance = new Session<>();
         return instance;
     }
     private TAccount currentAccount;

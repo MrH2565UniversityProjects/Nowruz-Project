@@ -1,5 +1,6 @@
 package com.genius.Entities.Music;
 
+import com.AP.Annotations.UserInput;
 import com.AP.EntityBase;
 
 import java.time.LocalDateTime;
@@ -7,7 +8,9 @@ import java.util.List;
 
 public class Album extends EntityBase {
     private String userId;
+    @UserInput(label = "Enter the album title", required = true)
     private String title;
+    @UserInput(label = "Enter Album release date", required = true)
     private LocalDateTime releaseDate;
     private List<Song> trackList;
 

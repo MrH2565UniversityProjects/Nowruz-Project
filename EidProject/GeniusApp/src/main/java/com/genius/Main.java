@@ -18,7 +18,7 @@ public class Main {
         AddRoutes();
     }
     private static void AddRoutes(){
-        Router.getInstance().addRoute("Home",new HomePage(scanner));
+        Router.getInstance().addRoute("Home",new HomePage());
         Router.getInstance().addRoute("Login",new LoginPage(scanner));
         Router.getInstance().addRoute("Signup",new SignupPage(scanner));
     }

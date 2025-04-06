@@ -1,10 +1,12 @@
 package com.genius.Entities.Music;
 
+import com.AP.Annotations.UserInput;
 import com.AP.EntityBase;
 
 public class Comment extends EntityBase {
     private String userId;
     private String songId;
+    @UserInput(label = "Enter your comment", required = true)
     private String content;
 
     public  Comment(){
