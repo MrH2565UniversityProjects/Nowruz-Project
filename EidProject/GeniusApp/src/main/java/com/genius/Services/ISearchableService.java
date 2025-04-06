@@ -1,10 +1,10 @@
 package com.genius.Services;
 
-import com.genius.Entities.BaseEntity;
+import com.AP.EntityBase;
 
 
 import java.util.List;
 
-public interface ISearchableService<T extends BaseEntity> {
+public interface ISearchableService<T extends EntityBase> {
     public List<T> GetByQuery(String query);
 }

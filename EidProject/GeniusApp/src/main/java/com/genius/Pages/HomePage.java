@@ -6,9 +6,8 @@ import com.AP.Router;
 
 public class HomePage extends Page {
     private Scanner scanner;
-    private Router router;
-    public HomePage(Router router,Scanner scanner) {
-        this.router = router;
+    public HomePage(Scanner scanner) {
+
         this.scanner = scanner;
     }
     @Override
@@ -17,7 +16,7 @@ public class HomePage extends Page {
     }
 
     @Override
-    protected void ShowContent() {
+    protected void ShowContent(Object[] param) {
         while (true) {
             System.out.println("1. Login");
             System.out.println("2. SignUp");
@@ -27,13 +26,13 @@ public class HomePage extends Page {
 
             switch (input) {
                 case "1":
-                    router.navigate("Login");
+                    Router.getInstance().navigate("Login");
                     return;
                 case "2":
-                    router.navigate("Signup");
+                    Router.getInstance().navigate("Signup");
                     return;
                 default:
-                    router.navigate(input);
+                    Router.getInstance().navigate(input);
             }
         }
     }

@@ -1,11 +1,8 @@
 package com.genius.Entities.Identity;
 
-import com.genius.Entities.BaseEntity;
+import com.AP.EntityBase;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-public class FollowingArtists extends BaseEntity {
+public class FollowingArtists extends EntityBase {
     private String userId;
     private String artistId;
 

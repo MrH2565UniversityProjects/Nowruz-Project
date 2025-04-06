@@ -2,18 +2,24 @@ package com.AP.Pages;
 
 public abstract class Page {
     private String name;
-    public Page(){
+
+    public Page() {
         Initialize();
     }
+
     protected abstract void Initialize();
-    protected abstract void ShowContent();
-    public final void Render(){
+
+    protected abstract void ShowContent(Object[] params);
+
+    public final void Render(Object[] params) {
         PreRender();
-        ShowContent();
-    };
-    protected void PreRender() {
-        System.out.println("=== "+name+" ===");
+        ShowContent(params);
     }
+
+    protected void PreRender() {
+        System.out.println("=== " + name + " ===");
+    }
+
     public String getName() {
         return name;
     }
@@ -21,5 +27,4 @@ public abstract class Page {
     public void setName(String name) {
         this.name = name;
     }
-
 }

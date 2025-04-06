@@ -7,9 +7,7 @@ import java.util.Scanner;
 
 public class LoginPage extends Page {
     private Scanner scanner;
-    private Router router;
-    public LoginPage(Router router,Scanner scanner) {
-        this.router = router;
+    public LoginPage(Scanner scanner) {
         this.scanner = scanner;
     }
     @Override
@@ -18,7 +16,7 @@ public class LoginPage extends Page {
     }
 
     @Override
-    protected void ShowContent() {
+    protected void ShowContent(Object[] params) {
         System.out.print("Enter username: ");
         String username = scanner.nextLine();
 
@@ -27,10 +25,10 @@ public class LoginPage extends Page {
 
         if (authenticate(username, password)) {
             System.out.println("Login successful!");
-            router.navigate();
+            Router.getInstance().navigate();
         } else {
             System.out.println("Invalid credentials. Please try again.");
-            ShowContent();
+            ShowContent(params);
         }
     }
 

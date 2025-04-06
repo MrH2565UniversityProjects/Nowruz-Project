@@ -1,12 +1,12 @@
-package com.genius.Entities;
+package com.AP;
 import java.time.LocalDateTime;
 import java.util.UUID;
-public abstract class BaseEntity{
+public abstract class EntityBase {
     private String id;
     private LocalDateTime createAt_;
     private LocalDateTime modifiedAt_;
 
-    public BaseEntity(){
+    public EntityBase(){
         id = UUID.randomUUID().toString();
         createAt_ = LocalDateTime.now();
         modifiedAt_ = LocalDateTime.now();

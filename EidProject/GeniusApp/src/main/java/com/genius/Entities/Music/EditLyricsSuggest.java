@@ -1,9 +1,9 @@
 package com.genius.Entities.Music;
 
-import com.genius.Entities.BaseEntity;
+import com.AP.EntityBase;
 import com.genius.Enums.EditLyricsSuggestStatus;
 
-public class EditLyricsSuggest extends BaseEntity {
+public class EditLyricsSuggest extends EntityBase {
     private String userId;
     private String songId;
     private String lyrics;

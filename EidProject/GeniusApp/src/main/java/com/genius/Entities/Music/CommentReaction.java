@@ -1,9 +1,9 @@
 package com.genius.Entities.Music;
 
-import com.genius.Entities.BaseEntity;
+import com.AP.EntityBase;
 import com.genius.Enums.Reaction;
 
-public class CommentReaction extends BaseEntity {
+public class CommentReaction extends EntityBase {
     private String commentId;
     private String userId;
     private Reaction reaction;

@@ -1,8 +1,5 @@
 package com.genius.Entities.Identity;
 
-import com.genius.Entities.BaseEntity;
-import java.util.List;
-
 public class Admin extends Account {
 
     public Admin(){

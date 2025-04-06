@@ -1,6 +1,7 @@
 package com.genius;
 
 import com.AP.Application;
+import com.AP.Router;
 import com.genius.Pages.HomePage;
 import com.genius.Pages.LoginPage;
 import com.genius.Pages.SignupPage;
@@ -14,12 +15,12 @@ public class Main {
     public static void Configure(Application app){
         scanner = new Scanner(System.in);
         unitOfWork = new UnitOfWork();
-        AddRoutes(app);
+        AddRoutes();
     }
-    private static void AddRoutes(Application app){
-        app.getRouter().addRoute("Home",new HomePage(app.getRouter(),scanner));
-        app.getRouter().addRoute("Login",new LoginPage(app.getRouter(),scanner));
-        app.getRouter().addRoute("Signup",new SignupPage(app.getRouter(),scanner));
+    private static void AddRoutes(){
+        Router.getInstance().addRoute("Home",new HomePage(scanner));
+        Router.getInstance().addRoute("Login",new LoginPage(scanner));
+        Router.getInstance().addRoute("Signup",new SignupPage(scanner));
     }
     public static void main(String[] args) {
         Application app = Application.Create();

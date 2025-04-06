@@ -1,14 +1,14 @@
 package com.genius.Entities.Identity;
 
-import com.genius.Entities.BaseEntity;
+import com.AP.Identity.AccountBase;
 
-public class Account extends BaseEntity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Account extends AccountBase {
     private String name;
     private int age;
     private String email;
-    private String username;
-    private String passwordHash;
-    
     public Account(){
 
     }
@@ -18,8 +18,8 @@ public class Account extends BaseEntity {
         this.name = name;
         this.age = age;
         this.email = email;
-        this.username = username;
-        this.passwordHash = passwordHash;
+        setUsername(username);
+        setPasswordHash(passwordHash);
     }
 
     // Getters and Setters
@@ -47,19 +47,4 @@ public class Account extends BaseEntity {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
 }

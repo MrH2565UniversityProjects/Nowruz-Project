@@ -1,11 +1,11 @@
 package com.genius.Services;
 
-import com.genius.Entities.BaseEntity;
+import com.AP.EntityBase;
 
 
 import java.util.List;
 import java.util.function.Predicate;
-public interface IService<T extends BaseEntity> {
+public interface IService<T extends EntityBase> {
     public void Add(T model);
     public void Edit(T model);
     public void Delete(String id);

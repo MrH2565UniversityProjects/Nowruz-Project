@@ -1,11 +1,8 @@
 package com.genius.Entities.Music;
 
-import com.genius.Entities.BaseEntity;
+import com.AP.EntityBase;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-public class Comment extends BaseEntity {
+public class Comment extends EntityBase {
     private String userId;
     private String songId;
     private String content;

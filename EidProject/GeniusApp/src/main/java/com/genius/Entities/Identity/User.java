@@ -1,10 +1,6 @@
 
 package com.genius.Entities.Identity;
 
-import com.genius.Entities.BaseEntity;
-
-import java.util.List;
-
 public class User extends Account {
 
     public User() {

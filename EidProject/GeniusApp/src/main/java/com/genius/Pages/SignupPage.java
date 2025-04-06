@@ -7,9 +7,7 @@ import java.util.Scanner;
 
 public class SignupPage extends Page {
     private Scanner scanner;
-    private Router router;
-    public SignupPage(Router router,Scanner scanner) {
-        this.router = router;
+    public SignupPage(Scanner scanner) {
         this.scanner = scanner;
     }
     @Override
@@ -18,7 +16,7 @@ public class SignupPage extends Page {
     }
 
     @Override
-    protected void ShowContent() {
+    protected void ShowContent(Object[] params) {
 
     }
 }
