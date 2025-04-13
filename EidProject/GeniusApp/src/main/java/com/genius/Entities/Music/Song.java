@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 public class Song extends EntityBase {
     private String albumId;
+    private String userId;
     @UserInput(label = "Enter the Song title",required = true)
     private String title;
     @UserInput(label = "Enter the Song lyrics",required = true)
@@ -26,7 +27,12 @@ public class Song extends EntityBase {
         this.releaseDate = releaseDate;
         this.viewsCount = 0;
     }
-
+    public String getUserId(){
+        return userId;
+    }
+    public void setUserId(String UserId){
+        userId = UserId;
+    }
     public String getAlbumId() {
         return albumId;
     }

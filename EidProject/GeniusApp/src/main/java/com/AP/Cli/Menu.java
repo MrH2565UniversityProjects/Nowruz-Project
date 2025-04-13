@@ -15,23 +15,29 @@ public class Menu {
         for (int i = 0; i < menuOptions.size(); i++) {
             System.out.println((i + 1) + ". " + menuOptions.get(i));
         }
-        System.out.print("Select an option by number: ");
+        System.out.print("Select an option by number (0 for back): ");
     }
 
     public void addOption(String optionName, Consumer<String> action) {
         menuOptions.add(optionName);
         actions.add(action);
     }
-
     public void navigateMenu(String title) {
-        while (true) {
-            displayMenu(title);
+        navigateMenu(title,false);
+    }
 
+    public void navigateMenu(String title,boolean hasCallback) {
+        boolean repeat = true;
+        while (repeat) {
+            displayMenu(title);
             String input = scanner.nextLine();
             if (isValidOption(input)) {
                 int selectedIndex = Integer.parseInt(input) - 1;
+                if(selectedIndex == -1)
+                    break;
                 Consumer<String> action = actions.get(selectedIndex);
                 action.accept(menuOptions.get(selectedIndex));
+                repeat = hasCallback;
             } else {
                 System.out.println("Invalid option, please try again.");
             }
@@ -41,7 +47,7 @@ public class Menu {
     private boolean isValidOption(String input) {
         try {
             int optionNumber = Integer.parseInt(input);
-            return optionNumber > 0 && optionNumber <= menuOptions.size();
+            return optionNumber >= 0 && optionNumber <= menuOptions.size();
         } catch (NumberFormatException e) {
             return false;
         }

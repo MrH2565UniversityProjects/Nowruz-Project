@@ -2,15 +2,15 @@ package com.AP;
 
 import com.AP.Identity.AccountBase;
 
-public class Session<TAccount extends AccountBase> {
-    private static Session<?> instance;
-    public static Session<?> getInstance(){
+public class Session {
+    private static Session instance;
+    public static Session getInstance(){
         if(instance == null)
-            instance = new Session<>();
+            instance = new Session();
         return instance;
     }
-    private TAccount currentAccount;
-    public void login(TAccount Account) {
+    private AccountBase currentAccount;
+    public void login(AccountBase Account) {
         currentAccount = Account;
     }
 
@@ -22,7 +22,7 @@ public class Session<TAccount extends AccountBase> {
         return currentAccount != null;
     }
 
-    public TAccount getCurrentAccount() {
+    public AccountBase getCurrentAccount() {
         return currentAccount;
     }
 }

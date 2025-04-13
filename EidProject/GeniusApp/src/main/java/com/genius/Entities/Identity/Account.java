@@ -1,13 +1,17 @@
 package com.genius.Entities.Identity;
 
+import com.AP.Annotations.UserInput;
 import com.AP.Identity.AccountBase;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Account extends AccountBase {
+    @UserInput(label = "Enter your name",required = true)
     private String name;
+    @UserInput(label = "Enter your age",required = false)
     private int age;
+    @UserInput(label = "Enter your email",required = true)
     private String email;
     public Account(){
 

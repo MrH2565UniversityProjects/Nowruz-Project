@@ -17,12 +17,12 @@ public class Album extends EntityBase {
     public Album(){
 
     }
-    public Album(String userId,String title, LocalDateTime releaseDate, List<Song> trackList) {
+    public Album(String userId,String title, LocalDateTime releaseDate) {
         super();
         this.userId = userId;
         this.title = title;
         this.releaseDate = releaseDate;
-        this.trackList = trackList;
+
     }
 
     public String getUserId() {

@@ -15,7 +15,7 @@ public class UnitOfWork {
         return dataStorage;
     }
 
-
+    private AccountManager accountManager = null;
     private AdminService adminService = null;
     private UserService userService = null;
     private ArtistService artistService = null;
@@ -33,7 +33,12 @@ public class UnitOfWork {
         }
         return adminService;
     }
-
+    public AccountManager getAccountManager() {
+        if (accountManager == null) {
+            accountManager = new AccountManager(getDataStorage());
+        }
+        return accountManager;
+    }
 
     public UserService getUserService() {
         if (userService == null) {

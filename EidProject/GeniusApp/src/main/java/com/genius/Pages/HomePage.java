@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.AP.Cli.Menu;
 import com.AP.Pages.Page;
 import com.AP.Router;
+import com.AP.Session;
 
 public class HomePage extends Page {
     public HomePage() {
@@ -21,8 +22,16 @@ public class HomePage extends Page {
                 Router.getInstance().navigate("Login");
             });
             mainMenu.addOption("SignUp",options -> {
-                Router.getInstance().navigate("SignUp");
+                Router.getInstance().navigate("Signup");
             });
+            if(Session.getInstance().isLoggedIn()){
+                mainMenu.addOption("Albums",options -> {
+                    Router.getInstance().navigate("Albums");
+                });
+                mainMenu.addOption("Songs",options -> {
+                    Router.getInstance().navigate("Songs");
+                });
+            }
         mainMenu.navigateMenu(super.getName());
     }
 }

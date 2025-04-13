@@ -1,11 +1,13 @@
 package com.AP.Identity;
 
+import com.AP.Annotations.UserInput;
 import com.AP.EntityBase;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AccountBase extends EntityBase {
+    @UserInput(label = "Enter your Username",required = true)
     private String username;
     private String passwordHash;
     private final List<String> Roles = new ArrayList<>();

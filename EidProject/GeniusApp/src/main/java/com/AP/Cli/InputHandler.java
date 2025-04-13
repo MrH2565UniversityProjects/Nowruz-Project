@@ -24,7 +24,7 @@ public class InputHandler {
 
 
     public static String getDate(String prompt) {
-        System.out.print(prompt + " (yyyy-MM-dd HH:mm): ");
+        System.out.print(prompt + " (yyyy-MM-dd'T'HH:mm): ");
         return scanner.nextLine();
     }
 
