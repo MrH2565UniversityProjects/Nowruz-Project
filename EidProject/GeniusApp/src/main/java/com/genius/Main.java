@@ -2,6 +2,9 @@ package com.genius;
 
 import com.AP.Application;
 import com.AP.Router;
+import com.genius.Pages.Artist.Albums.DeletePage;
+import com.genius.Pages.Artist.Albums.IndexPage;
+import com.genius.Pages.Artist.Albums.UpsertPage;
 import com.genius.Pages.HomePage;
 import com.genius.Pages.LoginPage;
 
@@ -21,14 +24,15 @@ public class Main {
     }
     private static void AddRoutes(){
         Router.getInstance().addRoute("Home",new HomePage());
-        Router.getInstance().addRoute("Albums",new  com.genius.Pages.Music.Albums.IndexPage(unitOfWork));
-        Router.getInstance().addRoute("Albums/Upsert",new com.genius.Pages.Music.Albums.UpsertPage(unitOfWork));
-        Router.getInstance().addRoute("Albums/Delete",new com.genius.Pages.Music.Albums.DeletePage(unitOfWork));
+        Router.getInstance().addRoute("Artist/Albums",new IndexPage(unitOfWork));
+        Router.getInstance().addRoute("Artist/Albums/Upsert",new UpsertPage(unitOfWork));
+        Router.getInstance().addRoute("Artist/Albums/Delete",new DeletePage(unitOfWork));
 
-        Router.getInstance().addRoute("Songs",new  com.genius.Pages.Music.Songs.IndexPage(unitOfWork));
-        Router.getInstance().addRoute("Songs/Upsert",new com.genius.Pages.Music.Songs.UpsertPage(unitOfWork));
-        Router.getInstance().addRoute("Songs/Delete",new com.genius.Pages.Music.Songs.DeletePage(unitOfWork));
+        Router.getInstance().addRoute("Artist/Songs",new com.genius.Pages.Artist.Songs.IndexPage(unitOfWork));
+        Router.getInstance().addRoute("Artist/Songs/Upsert",new com.genius.Pages.Artist.Songs.UpsertPage(unitOfWork));
+        Router.getInstance().addRoute("Artist/Songs/Delete",new com.genius.Pages.Artist.Songs.DeletePage(unitOfWork));
 
+        Router.getInstance().addRoute("Admin/Dashboard",new  com.genius.Pages.Admin.DashboardPage());
         Router.getInstance().addRoute("Login",new LoginPage(unitOfWork));
         Router.getInstance().addRoute("Signup",new SignupPage(unitOfWork));
     }

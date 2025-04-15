@@ -21,7 +21,13 @@ public class Session {
     public boolean isLoggedIn() {
         return currentAccount != null;
     }
-
+    private String CurrentAccountRole;
+    public String getCurrentAccountRole(){
+        return CurrentAccountRole;
+    }
+    public void setCurrentAccountRole(int index){
+        CurrentAccountRole = currentAccount.getRoles().get(index);
+    }
     public AccountBase getCurrentAccount() {
         return currentAccount;
     }

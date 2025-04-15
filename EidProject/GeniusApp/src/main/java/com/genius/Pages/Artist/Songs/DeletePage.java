@@ -1,4 +1,4 @@
-package com.genius.Pages.Music.Songs;
+package com.genius.Pages.Artist.Songs;
 
 import com.AP.Cli.InputHandler;
 import com.AP.Helpers.RouteParameterHelper;

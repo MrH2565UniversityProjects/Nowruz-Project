@@ -56,4 +56,5 @@ public class Album extends EntityBase {
     public void setTrackList(List<Song> trackList) {
         this.trackList = trackList;
     }
+    
 }

@@ -1,25 +1,21 @@
-package com.genius.Pages;
-
-import java.util.Scanner;
+package com.genius.Pages.Admin;
 
 import com.AP.Cli.Menu;
 import com.AP.Pages.Page;
 import com.AP.Router;
 import com.AP.Session;
 
-public class HomePage extends Page {
-    public HomePage() {
+public class DashboardPage extends Page {
+    public DashboardPage() {
     }
     @Override
     public void Initialize() {
-        setName("HomePage");
+        setName("Dashboard");
     }
 
     @Override
     protected void ShowContent(Object[] param) {
             Menu mainMenu = new Menu();
-
-
             if(Session.getInstance().isLoggedIn()){
                 mainMenu.addOption("Albums",options -> {
                     Router.getInstance().navigate("Albums");
@@ -27,7 +23,8 @@ public class HomePage extends Page {
                 mainMenu.addOption("Songs",options -> {
                     Router.getInstance().navigate("Songs");
                 });
-            }else{
+            }
+            else{
                 mainMenu.addOption("Login",options -> {
                     Router.getInstance().navigate("Login");
                 });

@@ -11,6 +11,10 @@ public abstract class EntityBase {
         createAt_ = LocalDateTime.now();
         modifiedAt_ = LocalDateTime.now();
     }
+    public EntityBase(String id){
+        super();
+        this.id = id;
+    }
 
     public String getId() {
         return id;

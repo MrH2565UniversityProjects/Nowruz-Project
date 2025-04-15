@@ -7,7 +7,7 @@ import com.genius.IdentityResult;
 public interface IAccountManager {
     public boolean CheckUsernameAvailability(String username);
     IdentityResult Register(Account account, String password);
-    boolean Login(String username, String password);
+    IdentityResult Login(String username, String password);
     void EditAccount(Account account);
     void DeleteAccount(String accountId);
     IdentityResult ChangePassword(String accountId, String oldPassword, String newPassword);

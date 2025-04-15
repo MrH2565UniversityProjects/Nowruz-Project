@@ -1,12 +1,15 @@
 package com.genius.Pages.Music.Songs;
 
 import com.AP.Cli.Menu;
+import com.AP.Helpers.RouteParameterHelper;
 import com.AP.Pages.Page;
 import com.AP.Router;
 import com.genius.Entities.Music.Song;
 import com.genius.UnitOfWork;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class IndexPage extends Page {
     private final UnitOfWork unitOfWork;
@@ -15,37 +18,26 @@ public class IndexPage extends Page {
     }
     @Override
     public void Initialize() {
-        setName("Index Page");
+        setName("Songs Page");
     }
 
     @Override
     protected void ShowContent(Object[] param) {
-        List<Song> Songs = unitOfWork.getSongService().GetAll();
+        String id = RouteParameterHelper.getParameter(param,0,String.class,null);
+        List<Song> Songs;
+        if(id != null){
+            Songs = unitOfWork.getSongService().GetAll(p-> Objects.equals(p.getAlbumId(), id));
+        }else{
+            Songs = unitOfWork.getSongService().GetAll();
+        }
         Menu SongList = new Menu();
-        SongList.addOption("Create",options -> {
-            Router.getInstance().navigate("Songs/Upsert");
-        });
-        for (int i = 0;i< Songs.size() ;i++){
-            var Song = Songs.get(i);
-            var SongOptions = CreateCrudMenu(Song);
-            SongList.addOption(Song.getTitle(),option -> {
-                SongOptions.navigateMenu(Song.getTitle());
+        for (Song Song : Songs) {
+            SongList.addOption(Song.getTitle(), option -> {
+                Router.getInstance().navigate("Songs/Detail", Song.getId());
             });
         }
         SongList.navigateMenu("Song List");
     }
 
-    private Menu CreateCrudMenu(Song Song) {
-        var SongOptions = new Menu();
-        SongOptions.addOption("Edit",options -> {
-            Router.getInstance().navigate("Songs/Upsert", Song.getId());
-        });
-        SongOptions.addOption("Detail",options -> {
-            Router.getInstance().navigate("Songs/Detail", Song.getId());
-        });
-        SongOptions.addOption("Delete",options -> {
-            Router.getInstance().navigate("Songs/Delete", Song.getId());
-        });
-        return SongOptions;
-    }
+
 }

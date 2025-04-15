@@ -17,6 +17,14 @@ public class Account extends AccountBase {
 
     }
     // Constructor
+    public Account(String id,String name, int age, String email, String username, String passwordHash) {
+        super(id);
+        this.name = name;
+        this.age = age;
+        this.email = email;
+        setUsername(username);
+        setPasswordHash(passwordHash);
+    }
     public Account(String name, int age, String email, String username, String passwordHash) {
         super();
         this.name = name;

@@ -1,4 +1,4 @@
-package com.genius.Pages.Music.Albums;
+package com.genius.Pages.Artist.Albums;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

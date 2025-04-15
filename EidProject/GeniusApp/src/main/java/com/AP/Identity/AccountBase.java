@@ -11,14 +11,29 @@ public abstract class AccountBase extends EntityBase {
     private String username;
     private String passwordHash;
     private final List<String> Roles = new ArrayList<>();
+    private boolean isVerified = false;
+    public AccountBase(String id){
+        super(id);
+    }
     public AccountBase(){
 
     }
     // Constructor
+    public AccountBase(String id,String username, String passwordHash) {
+        super(id);
+        this.username = username;
+        this.passwordHash = passwordHash;
+    }
     public AccountBase(String username, String passwordHash) {
         super();
         this.username = username;
         this.passwordHash = passwordHash;
+    }
+    public boolean getIsVerified() {
+        return isVerified;
+    }
+    public void setIsVerified(boolean value){
+        isVerified = value;
     }
     public void addRole(String role){
         Roles.add(role);

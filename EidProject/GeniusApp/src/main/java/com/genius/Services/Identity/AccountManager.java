@@ -35,13 +35,22 @@ public class AccountManager implements IAccountManager {
     }
 
     @Override
-    public boolean Login(String username, String password) {
+    public IdentityResult Login(String username, String password) {
         Account account = GetAccountByUsername(username);
         if (account == null) {
-            return false;
+            //return IdentityResult.CreateFailedResult("Username or password is incorrect");
+            return IdentityResult.CreateFailedResult("Username is incorrect");
         }
         String hashedPassword = HashUtil.hashPassword(password, account.getId());
-        return account.getPasswordHash().equals(hashedPassword);
+        if(!account.getIsVerified()){
+            return IdentityResult.CreateFailedResult("Your account is not verified");
+        }
+        if(account.getPasswordHash().equals(hashedPassword)){
+            return IdentityResult.CreateSuccessResult();
+        }else{
+            return IdentityResult.CreateFailedResult("Password is incorrect");
+            //return IdentityResult.CreateFailedResult("Username or password is incorrect");
+        }
     }
 
     @Override

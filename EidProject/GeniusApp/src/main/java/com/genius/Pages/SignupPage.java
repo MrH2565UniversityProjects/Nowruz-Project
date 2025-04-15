@@ -2,6 +2,7 @@ package com.genius.Pages;
 
 import com.AP.Cli.FormHandler;
 import com.AP.Cli.InputHandler;
+import com.AP.Cli.Menu;
 import com.AP.Cli.OutputHandler;
 import com.AP.Pages.Page;
 import com.AP.Router;
@@ -29,6 +30,15 @@ public class SignupPage extends Page {
         if(!password.equals(confirmPassword)){
             OutputHandler.PrintError("Password and confirm must be equal");
         }
+        Menu menu = new Menu();
+        menu.addOption("User",options -> {
+            account.addRole("User");
+            account.setIsVerified(true);
+        });
+        menu.addOption("Artist",options -> {
+            account.addRole("Artist");
+        });
+        menu.navigateMenu("Select your Role");
         unitOfWork.getAccountManager().Register(account,password);
         Router.getInstance().navigate("Home");
     }
