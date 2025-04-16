@@ -51,7 +51,7 @@ public class IndexPage extends Page {
         }
 
         ArtistOptions.addOption("Detail",options -> {
-            Router.getInstance().navigate("Artists/Detail", Artist.getId());
+            Router.getInstance().navigate("Artist/Detail", Artist.getId());
         });
         /*ArtistOptions.addOption("Albums",options -> {
             Router.getInstance().navigate("Albums", Artist.getId());
