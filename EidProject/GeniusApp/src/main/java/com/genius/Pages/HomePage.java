@@ -21,6 +21,21 @@ public class HomePage extends Page {
 
 
             if(Session.getInstance().isLoggedIn()){
+                if(Session.getInstance().getCurrentAccountRole().equals("Artist")){
+                    mainMenu.addOption("Dashboard",options -> {
+                        Router.getInstance().navigate("Artist/Dashboard");
+                    });
+                }
+                else if(Session.getInstance().getCurrentAccountRole().equals("Admin")){
+                    mainMenu.addOption("Dashboard",options -> {
+                        Router.getInstance().navigate("Admin/Dashboard");
+                    });
+                }
+                else if(Session.getInstance().getCurrentAccountRole().equals("User")){
+                    mainMenu.addOption("Following",options -> {
+                        Router.getInstance().navigate("Following");
+                    });
+                }
                 mainMenu.addOption("Artist",options -> {
                     Router.getInstance().navigate("Artist");
                 });

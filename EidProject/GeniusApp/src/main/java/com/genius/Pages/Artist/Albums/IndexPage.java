@@ -39,6 +39,9 @@ public class IndexPage extends Page {
 
     private Menu CreateCrudMenu(Album album) {
         var albumOptions = new Menu();
+        albumOptions.addOption("Add Song",options -> {
+            Router.getInstance().navigate("Song/Upsert", null,album.getId());
+        });
         albumOptions.addOption("Edit",options -> {
             Router.getInstance().navigate("Albums/Upsert", album.getId());
         });

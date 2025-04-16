@@ -23,6 +23,7 @@ public class UpsertPage extends Page {
     @Override
     protected void ShowContent(Object[] param) {
            String id = RouteParameterHelper.getParameter(param,0,String.class,null);
+           
            Comment Comment = new Comment();
            if(id != null){
                if(!Objects.equals(Comment.getUserId(), Session.getInstance().getCurrentAccount().getId())){

@@ -23,6 +23,7 @@ public class UpsertPage extends Page {
     @Override
     protected void ShowContent(Object[] param) {
            String id = RouteParameterHelper.getParameter(param,0,String.class,null);
+           String albumId = RouteParameterHelper.getParameter(param,1,String.class,null);
            Song song = new Song();
            if(id != null){
                if(!Objects.equals(song.getUserId(), Session.getInstance().getCurrentAccount().getId())){
@@ -31,7 +32,6 @@ public class UpsertPage extends Page {
                    return;
                }
                song = unitOfWork.getSongService().GetById(id);
-
                FormHandler.collectData(song,true);
                unitOfWork.getSongService().Edit(song);
            }
@@ -39,6 +39,7 @@ public class UpsertPage extends Page {
            {
                FormHandler.collectData(song);
                song.setUserId(Session.getInstance().getCurrentAccount().getId());
+               song.setAlbumId(albumId);
                unitOfWork.getSongService().Add(song);
            }
            Router.getInstance().navigate("Songs");

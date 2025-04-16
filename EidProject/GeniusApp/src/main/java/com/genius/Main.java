@@ -10,6 +10,7 @@ import com.genius.Pages.LoginPage;
 
 
 import com.genius.Pages.SignupPage;
+import com.genius.Pages.User.FollowingPage;
 
 import java.util.Scanner;
 
@@ -29,7 +30,7 @@ public class Main {
         Router.getInstance().addRoute("Artist/Albums",new IndexPage(unitOfWork));
         Router.getInstance().addRoute("Artist/Albums/Upsert",new UpsertPage(unitOfWork));
         Router.getInstance().addRoute("Artist/Albums/Delete",new DeletePage(unitOfWork));
-
+        Router.getInstance().addRoute("Following",new FollowingPage(unitOfWork));
         Router.getInstance().addRoute("Artist",new com.genius.Pages.Artist.IndexPage(unitOfWork));
         Router.getInstance().addRoute("Artist/Detail",new com.genius.Pages.Artist.DetailPage(unitOfWork));
 

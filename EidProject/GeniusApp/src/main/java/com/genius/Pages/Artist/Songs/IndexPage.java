@@ -25,10 +25,9 @@ public class IndexPage extends Page {
         SongList.addOption("Create",options -> {
             Router.getInstance().navigate("Songs/Upsert");
         });
-        for (int i = 0;i< Songs.size() ;i++){
-            var Song = Songs.get(i);
+        for (Song Song : Songs) {
             var SongOptions = CreateCrudMenu(Song);
-            SongList.addOption(Song.getTitle(),option -> {
+            SongList.addOption(Song.getTitle(), option -> {
                 SongOptions.navigateMenu(Song.getTitle());
             });
         }
