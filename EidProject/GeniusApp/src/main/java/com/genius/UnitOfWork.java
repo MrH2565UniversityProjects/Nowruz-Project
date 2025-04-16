@@ -16,7 +16,6 @@ public class UnitOfWork {
     }
 
     private AccountManager accountManager = null;
-    private AdminService adminService = null;
     private UserService userService = null;
     private ArtistService artistService = null;
     private AlbumService albumService = null;
@@ -26,13 +25,6 @@ public class UnitOfWork {
     private EditLyricsSuggestService editLyricsSuggestService = null;
     private FollowingArtistsService followingArtistsService = null;
 
-
-    public AdminService getAdminService() {
-        if (adminService == null) {
-            adminService = new AdminService(getDataStorage());
-        }
-        return adminService;
-    }
     public AccountManager getAccountManager() {
         if (accountManager == null) {
             accountManager = new AccountManager(getDataStorage());

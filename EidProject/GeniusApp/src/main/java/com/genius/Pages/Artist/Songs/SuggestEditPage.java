@@ -1,5 +1,6 @@
 package com.genius.Pages.Artist.Songs;
 
+import com.AP.Cli.InputHandler;
 import com.AP.Cli.Menu;
 import com.AP.Pages.Page;
 import com.AP.Router;
@@ -22,25 +23,29 @@ public class SuggestEditPage extends Page {
 
     @Override
     protected void ShowContent(Object[] param) {
-       var Suggests = unitOfWork.getEditLyricsSuggestService().GetAll(p -> Objects.equals(p.getUserId(), Session.getInstance().getCurrentAccount().getId()));
-         if(!Suggests.isEmpty()) {
-             var suggest = Suggests.getFirst();
-             var song = unitOfWork.getSongService().GetById(suggest.getSongId());
-             System.out.println(song.getId());
-             System.out.println(song.getTitle());
-             System.out.println(suggest.getLyrics());
-             Menu menu = new Menu();
-             menu.addOption("Confirm", _ -> {
-                 song.setLyrics(suggest.getLyrics());
-                 unitOfWork.getSongService().Edit(song);
-                 unitOfWork.getEditLyricsSuggestService().Delete(suggest.getId());
-             });
-             menu.addOption("Reject", _ -> {
-                 song.setLyrics(suggest.getLyrics());
-                 unitOfWork.getSongService().Edit(song);
-                 unitOfWork.getEditLyricsSuggestService().Delete(suggest.getId());
-             });
-             menu.navigateMenu("");
-         }
+        var Songs =  unitOfWork.getSongService().GetAll(p -> p.getUserId().equals(Session.getInstance().getCurrentAccount().getId()));
+        for (var song : Songs) {
+            var Suggests = unitOfWork.getEditLyricsSuggestService().GetAll(p -> p.getSongId().equals(song.getId()));
+            if (!Suggests.isEmpty()) {
+                var suggest = Suggests.getFirst();
+                System.out.println(song.getId());
+                System.out.println(song.getTitle());
+                System.out.println(suggest.getLyrics());
+                Menu menu = new Menu();
+                menu.addOption("Confirm", _ -> {
+                    song.setLyrics(suggest.getLyrics());
+                    unitOfWork.getSongService().Edit(song);
+                    unitOfWork.getEditLyricsSuggestService().Delete(suggest.getId());
+                });
+                menu.addOption("Reject", _ -> {
+                    song.setLyrics(suggest.getLyrics());
+                    unitOfWork.getSongService().Edit(song);
+                    unitOfWork.getEditLyricsSuggestService().Delete(suggest.getId());
+                });
+                menu.navigateMenu("");
+            }
+        }
+            InputHandler.WaitForKey("There is not any Suggestion ,Press enter for back...");
+            Router.getInstance().goBack();
     }
 }

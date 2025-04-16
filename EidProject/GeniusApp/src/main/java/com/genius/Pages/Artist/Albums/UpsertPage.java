@@ -30,11 +30,7 @@ public class UpsertPage extends Page {
 
            Album album = new Album();
            if(id != null){
-               if(!Objects.equals(album.getUserId(), Session.getInstance().getCurrentAccount().getId())){
-                   System.out.println("You don't have access to this album");
-                   Router.getInstance().navigate("Albums");
-                   return;
-               }
+
                album = unitOfWork.getAlbumService().GetById(id);
 
                FormHandler.collectData(album,true);

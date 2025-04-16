@@ -2,7 +2,7 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/88c233bc-d6e2-499b-bde0-43ca5147cb61" width="500">
 </p>
-A Java-based application inspired by Genius.com, designed for managing song lyrics, artist profiles, and user contributions.   
+A Java-based application inspired by Genius.com, designed for managing song lyrics, artistProfile profiles, and user contributions.   
 
 ## Getting Started  
 Refer to the **project documentation** for full details on requirements, implementation guidelines, and evaluation criteria.  

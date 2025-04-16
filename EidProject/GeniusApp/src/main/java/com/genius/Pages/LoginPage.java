@@ -24,7 +24,10 @@ public class LoginPage extends Page {
     public void Initialize() {
         setName("Login Page");
     }
-
+    @Override
+    public boolean ShouldSaveInHistory() {
+        return false;
+    }
     @Override
     protected void ShowContent(Object[] params) {
         String username = InputHandler.getInput("Enter Username");

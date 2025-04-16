@@ -13,6 +13,11 @@ public class Account extends AccountBase {
     private int age;
     @UserInput(label = "Enter your email",required = true)
     private String email;
+    private ArtistProfile artistProfile;
+
+    public boolean isArtist() {
+        return getRoles().contains("Artist") && artistProfile != null;
+    }
     public Account(){
 
     }
@@ -35,6 +40,12 @@ public class Account extends AccountBase {
     }
 
     // Getters and Setters
+    public ArtistProfile getArtistProfile(){
+        return artistProfile;
+    }
+    public void setArtistProfile(ArtistProfile artistProfile){
+        this.artistProfile = artistProfile;
+    }
     public String getName() {
         return name;
     }

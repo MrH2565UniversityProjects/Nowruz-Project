@@ -1,4 +1,4 @@
-package com.genius.Pages.Music.Comments.Comments;
+package com.genius.Pages.Music.Songs.Comments;
 
 import com.AP.Cli.InputHandler;
 import com.AP.Helpers.RouteParameterHelper;

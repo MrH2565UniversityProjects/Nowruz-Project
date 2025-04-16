@@ -6,12 +6,12 @@ import com.AP.EntityBase;
 import java.time.LocalDateTime;
 
 public class Song extends EntityBase {
-    private String albumId;
-    private String userId;
+    private String albumId= "";
+    private String userId = "";
     @UserInput(label = "Enter the Song title",required = true)
-    private String title;
+    private String title= "";
     @UserInput(label = "Enter the Song lyrics",required = true)
-    private String lyrics;
+    private String lyrics= "";
     @UserInput(label = "Enter the Song release Date",required = true)
     private LocalDateTime releaseDate;
     private int viewsCount;

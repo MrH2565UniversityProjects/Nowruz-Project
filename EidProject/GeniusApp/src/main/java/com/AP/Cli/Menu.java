@@ -1,5 +1,7 @@
 package com.AP.Cli;
 
+import com.AP.Router;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -33,8 +35,10 @@ public class Menu {
             String input = scanner.nextLine();
             if (isValidOption(input)) {
                 int selectedIndex = Integer.parseInt(input) - 1;
-                if(selectedIndex == -1)
+                if(selectedIndex == -1) {
+                    Router.getInstance().goBack();
                     break;
+                }
                 Consumer<String> action = actions.get(selectedIndex);
                 action.accept(menuOptions.get(selectedIndex));
                 repeat = hasCallback;

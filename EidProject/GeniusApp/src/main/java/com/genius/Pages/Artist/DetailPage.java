@@ -1,18 +1,15 @@
-package com.genius.Pages.Music.Albums;
+package com.genius.Pages.Artist;
 
 import com.AP.Cli.InputHandler;
 import com.AP.Cli.Menu;
 import com.AP.Helpers.RouteParameterHelper;
 import com.AP.Pages.Page;
 import com.AP.Router;
-import com.genius.Entities.Music.Album;
 import com.genius.UnitOfWork;
-
-import java.util.List;
 
 public class DetailPage extends Page {
     private final UnitOfWork unitOfWork;
-    public DetailPage( UnitOfWork unitOfWork) {
+    public DetailPage(UnitOfWork unitOfWork) {
         this.unitOfWork = unitOfWork;
     }
     @Override
@@ -23,8 +20,8 @@ public class DetailPage extends Page {
     @Override
     protected void ShowContent(Object[] param) {
         String id = RouteParameterHelper.getParameter(param,0,String.class,null);
-        var album = unitOfWork.getAlbumService().GetById(id);
-        System.out.println(album);
+        var Artist = unitOfWork.getArtistService().GetById(id);
+        System.out.println(Artist);
         InputHandler.WaitForKey("Press enter for back...");
         Router.getInstance().goBack();
     }

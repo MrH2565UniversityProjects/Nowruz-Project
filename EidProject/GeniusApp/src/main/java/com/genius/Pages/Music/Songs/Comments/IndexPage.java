@@ -1,4 +1,4 @@
-package com.genius.Pages.Music.Comments.Comments;
+package com.genius.Pages.Music.Songs.Comments;
 
 import com.AP.Cli.Menu;
 import com.AP.Pages.Page;
@@ -25,21 +25,21 @@ public class IndexPage extends Page {
         List<Comment> Comments = unitOfWork.getCommentService().GetAll();
         Menu CommentList = new Menu();
         CommentList.addOption("Create",options -> {
-            Router.getInstance().navigate("Comments/Upsert");
+            Router.getInstance().navigate("Songs/Comments/Upsert");
         });
-        for (int i = 0;i< Comments.size() ;i++){
-            var Comment = Comments.get(i);
+        for (Comment Comment : Comments) {
             var CommentOptions = CreateCommentMoreOptionMenu(Comment);
             var user = unitOfWork.getAccountManager().GetAccountById(Comment.getUserId());
-            var previewContent = Comment.getContent().substring(0,15);
-            if(Comment.getContent().length()>15){
-                previewContent = previewContent + "...";
+            String previewContent;
+            if (Comment.getContent().length() > 15) {
+                previewContent = Comment.getContent().substring(0, 15) + "...";
+            }else{
+                previewContent =  Comment.getContent();
             }
-            CommentList.addOption(user.getName() + "-"+ previewContent,option -> {
-                if(Objects.equals(Session.getInstance().getCurrentAccount().getId(), Comment.getUserId())) {
+            CommentList.addOption(user.getName() + "-" + previewContent, option -> {
+                if (Objects.equals(Session.getInstance().getCurrentAccount().getId(), Comment.getUserId())) {
                     CommentOptions.navigateMenu(user.getName() + "-" + Comment.getContent());
-                }else
-                {
+                } else {
                     Router.getInstance().navigate("Songs/Comments/Detail", Comment.getId());
                 }
             });

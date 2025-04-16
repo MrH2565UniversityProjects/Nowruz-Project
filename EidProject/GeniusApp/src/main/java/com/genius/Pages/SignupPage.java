@@ -7,6 +7,7 @@ import com.AP.Cli.OutputHandler;
 import com.AP.Pages.Page;
 import com.AP.Router;
 import com.genius.Entities.Identity.Account;
+import com.genius.Entities.Identity.ArtistProfile;
 import com.genius.UnitOfWork;
 
 import java.util.Scanner;
@@ -20,7 +21,10 @@ public class SignupPage extends Page {
     public void Initialize() {
         setName("SignUp Page");
     }
-
+    @Override
+    public boolean ShouldSaveInHistory() {
+        return false;
+    }
     @Override
     protected void ShowContent(Object[] params) {
         Account account = new Account();
@@ -37,6 +41,8 @@ public class SignupPage extends Page {
         });
         menu.addOption("Artist",options -> {
             account.addRole("Artist");
+            ArtistProfile artistProfile = new ArtistProfile(InputHandler.getInput("Enter Bio"));
+            account.setArtistProfile(artistProfile);
         });
         menu.navigateMenu("Select your Role");
         unitOfWork.getAccountManager().Register(account,password);

@@ -2,13 +2,8 @@ package com.genius.Services.Identity;
 
 import com.genius.Data.DataStorage;
 import com.genius.Entities.Identity.Account;
-import com.genius.Entities.Identity.Admin;
-import com.genius.Enums.AccountRole;
 import com.genius.IdentityResult;
-import com.genius.Services.*;
 import com.genius.Utils.*;
-import java.util.List;
-import java.util.function.Predicate;
 
 public class AccountManager implements IAccountManager {
     private final DataStorage dataStorage;

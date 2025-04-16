@@ -22,7 +22,10 @@ public class SuggestLyricsPage extends Page {
     public void Initialize() {
         setName("Songs Page");
     }
-
+    @Override
+    public boolean ShouldSaveInHistory() {
+        return false;
+    }
     @Override
     protected void ShowContent(Object[] param) {
         String id = RouteParameterHelper.getParameter(param,0,String.class,null);

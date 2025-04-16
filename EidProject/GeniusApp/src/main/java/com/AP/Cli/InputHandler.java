@@ -37,4 +37,11 @@ public class InputHandler {
             System.out.println("Invalid input, please enter 'yes' or 'no'.");
         }
     }
+    public static void WaitForKey(String label) {
+        System.out.println(label);
+        scanner.nextLine();
+    }
+    public static void WaitForKey() {
+       WaitForKey("Press Enter to continue...");
+    }
 }

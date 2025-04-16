@@ -1,5 +1,6 @@
 package com.genius.Pages.Music.Songs;
 
+import com.AP.Cli.InputHandler;
 import com.AP.Cli.Menu;
 import com.AP.Helpers.RouteParameterHelper;
 import com.AP.Pages.Page;
@@ -29,13 +30,19 @@ public class IndexPage extends Page {
         }else{
             Songs = unitOfWork.getSongService().GetAll();
         }
-        Menu SongList = new Menu();
-        for (Song Song : Songs) {
-            SongList.addOption(Song.getTitle(), option -> {
-                Router.getInstance().navigate("Songs/Detail", Song.getId());
-            });
+        if(!Songs.isEmpty()) {
+            Menu SongList = new Menu();
+            for (Song Song : Songs) {
+                SongList.addOption(Song.getTitle(), option -> {
+                    Router.getInstance().navigate("Songs/Detail", Song.getId());
+                });
+            }
+            SongList.navigateMenu("Song List");
         }
-        SongList.navigateMenu("Song List");
+        else{
+            InputHandler.WaitForKey("There is not any Song ,Press enter for back...");
+            Router.getInstance().goBack();
+        }
     }
 
 

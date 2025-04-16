@@ -21,11 +21,18 @@ public class HomePage extends Page {
 
 
             if(Session.getInstance().isLoggedIn()){
+                mainMenu.addOption("Artist",options -> {
+                    Router.getInstance().navigate("Artist");
+                });
                 mainMenu.addOption("Albums",options -> {
                     Router.getInstance().navigate("Albums");
                 });
                 mainMenu.addOption("Songs",options -> {
                     Router.getInstance().navigate("Songs");
+                });
+                mainMenu.addOption("Logout",options -> {
+                    Session.getInstance().logout();
+                    Router.getInstance().navigate();
                 });
             }else{
                 mainMenu.addOption("Login",options -> {
