@@ -56,5 +56,14 @@ public class Album extends EntityBase {
     public void setTrackList(List<Song> trackList) {
         this.trackList = trackList;
     }
-    
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id='" + getId() + '\'' +
+                ", title='" + title + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", trackCount=" + (trackList != null ? trackList.size() : 0) +
+                '}';
+    }
+
 }

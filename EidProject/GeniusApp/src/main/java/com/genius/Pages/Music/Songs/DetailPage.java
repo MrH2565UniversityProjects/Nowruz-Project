@@ -20,6 +20,8 @@ public class DetailPage extends Page {
     protected void ShowContent(Object[] param) {
         String id = RouteParameterHelper.getParameter(param,0,String.class,null);
         var song = unitOfWork.getSongService().GetById(id);
+        song.incrementViewsCount();
+        unitOfWork.getSongService().Edit(song);
         System.out.println(song);
         Menu SongOption = new Menu();
         SongOption.addOption("Comments",options -> {

@@ -21,6 +21,7 @@ public class DetailPage extends Page {
     protected void ShowContent(Object[] param) {
         String id = RouteParameterHelper.getParameter(param,0,String.class,null);
         var Artist = unitOfWork.getArtistService().GetById(id);
+
         System.out.println(Artist);
         InputHandler.WaitForKey("Press enter for back...");
         Router.getInstance().goBack();

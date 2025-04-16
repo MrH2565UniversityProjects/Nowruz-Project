@@ -41,5 +41,16 @@ public class Artist {
 
     public Account getAccount() {
         return account;
+    }@Override
+    public String toString() {
+        return "Artist{" +
+                "id='" + getId() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", age=" + getAge() +
+                ", verified=" + isVerified() +
+                ", bio='" + getBio() + '\'' +
+                '}';
     }
+
 }

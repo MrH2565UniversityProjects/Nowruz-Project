@@ -72,5 +72,16 @@ public class Song extends EntityBase {
     public void incrementViewsCount() {
         this.viewsCount++;
     }
-
+    @Override
+    public String toString() {
+        return "Song{" +
+                "id='" + getId() + '\'' +
+                ", title='" + title + '\'' +
+                ", lyrics='" + (lyrics.length() > 30 ? lyrics.substring(0, 30) + "..." : lyrics) + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", viewsCount=" + viewsCount +
+                ", albumId='" + albumId + '\'' +
+                ", userId='" + userId + '\'' +
+                '}';
+    }
 }
