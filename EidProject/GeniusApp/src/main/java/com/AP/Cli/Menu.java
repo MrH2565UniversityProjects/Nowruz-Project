@@ -11,13 +11,16 @@ public class Menu {
     private final Scanner scanner = new Scanner(System.in);
     private final List<String> menuOptions = new ArrayList<>();
     private final List<Consumer<String>> actions = new ArrayList<>();
-
+    private boolean hasBack = true;
+    public void SetHasBack(boolean value){
+        hasBack = value;
+    }
     public void displayMenu(String title) {
         System.out.println("==== " + title + " ====");
         for (int i = 0; i < menuOptions.size(); i++) {
             System.out.println((i + 1) + ". " + menuOptions.get(i));
         }
-        System.out.print("Select an option by number (0 for back): ");
+        System.out.print("Select an option by number " + (hasBack ? "(0 for back) " : "")+":");
     }
 
     public void addOption(String optionName, Consumer<String> action) {
@@ -35,7 +38,7 @@ public class Menu {
             String input = scanner.nextLine();
             if (isValidOption(input)) {
                 int selectedIndex = Integer.parseInt(input) - 1;
-                if(selectedIndex == -1) {
+                if(selectedIndex == -1 && hasBack) {
                     Router.getInstance().goBack();
                     break;
                 }
@@ -51,7 +54,7 @@ public class Menu {
     private boolean isValidOption(String input) {
         try {
             int optionNumber = Integer.parseInt(input);
-            return optionNumber >= 0 && optionNumber <= menuOptions.size();
+            return (optionNumber > 0 && optionNumber <= menuOptions.size()) || (hasBack && optionNumber == 0);
         } catch (NumberFormatException e) {
             return false;
         }

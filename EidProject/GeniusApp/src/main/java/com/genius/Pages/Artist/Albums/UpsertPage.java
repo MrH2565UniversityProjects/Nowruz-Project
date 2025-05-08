@@ -25,6 +25,10 @@ public class UpsertPage extends Page {
     }
 
     @Override
+    public boolean ShouldSaveInHistory(){
+        return false;
+    }
+    @Override
     protected void ShowContent(Object[] param) {
            String id = RouteParameterHelper.getParameter(param,0,String.class,null);
 
@@ -42,6 +46,6 @@ public class UpsertPage extends Page {
                album.setUserId(Session.getInstance().getCurrentAccount().getId());
                unitOfWork.getAlbumService().Add(album);
            }
-           Router.getInstance().navigate("Albums");
+           Router.getInstance().navigate("Artist/Albums");
     }
 }

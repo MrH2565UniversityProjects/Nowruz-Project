@@ -10,7 +10,7 @@ public class Album extends EntityBase {
     private String userId;
     @UserInput(label = "Enter the album title", required = true)
     private String title;
-    @UserInput(label = "Enter Album release date", required = true)
+    @UserInput(label = "Enter Album release date (for example 2025-12-15T10:10)", required = true)
     private LocalDateTime releaseDate;
     private List<Song> trackList;
 

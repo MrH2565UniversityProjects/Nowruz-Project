@@ -12,7 +12,7 @@ public class Song extends EntityBase {
     private String title= "";
     @UserInput(label = "Enter the Song lyrics",required = true)
     private String lyrics= "";
-    @UserInput(label = "Enter the Song release Date",required = true)
+    @UserInput(label = "Enter the Song release Date (for example 2025-12-15T10:10)",required = true)
     private LocalDateTime releaseDate;
     private int viewsCount;
 
@@ -77,7 +77,7 @@ public class Song extends EntityBase {
         return "Song{" +
                 "id='" + getId() + '\'' +
                 ", title='" + title + '\'' +
-                ", lyrics='" + (lyrics.length() > 30 ? lyrics.substring(0, 30) + "..." : lyrics) + '\'' +
+                ", lyrics='" + lyrics + '\'' +
                 ", releaseDate=" + releaseDate +
                 ", viewsCount=" + viewsCount +
                 ", albumId='" + albumId + '\'' +

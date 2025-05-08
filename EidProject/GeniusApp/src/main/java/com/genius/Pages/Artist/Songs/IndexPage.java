@@ -1,8 +1,10 @@
 package com.genius.Pages.Artist.Songs;
 
 import com.AP.Cli.Menu;
+import com.AP.Helpers.RouteParameterHelper;
 import com.AP.Pages.Page;
 import com.AP.Router;
+import com.AP.Session;
 import com.genius.Entities.Music.Song;
 import com.genius.UnitOfWork;
 
@@ -20,11 +22,9 @@ public class IndexPage extends Page {
 
     @Override
     protected void ShowContent(Object[] param) {
-        List<Song> Songs = unitOfWork.getSongService().GetAll();
+        String AlbumId = RouteParameterHelper.getParameter(param,0,String.class,null);
+        List<Song> Songs = unitOfWork.getSongService().GetAll(p->p.getAlbumId().equals(AlbumId));
         Menu SongList = new Menu();
-        SongList.addOption("Create",options -> {
-            Router.getInstance().navigate("Songs/Upsert");
-        });
         for (Song Song : Songs) {
             var SongOptions = CreateCrudMenu(Song);
             SongList.addOption(Song.getTitle(), option -> {
@@ -37,13 +37,13 @@ public class IndexPage extends Page {
     private Menu CreateCrudMenu(Song Song) {
         var SongOptions = new Menu();
         SongOptions.addOption("Edit",options -> {
-            Router.getInstance().navigate("Songs/Upsert", Song.getId());
+            Router.getInstance().navigate("Artist/Songs/Upsert", Song.getId());
         });
         SongOptions.addOption("Detail",options -> {
-            Router.getInstance().navigate("Songs/Detail", Song.getId());
+            Router.getInstance().navigate("Artist/Songs/Detail", Song.getId());
         });
         SongOptions.addOption("Delete",options -> {
-            Router.getInstance().navigate("Songs/Delete", Song.getId());
+            Router.getInstance().navigate("Artist/Songs/Delete", Song.getId());
         });
         return SongOptions;
     }

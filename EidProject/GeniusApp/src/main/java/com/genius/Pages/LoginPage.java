@@ -39,6 +39,7 @@ public class LoginPage extends Page {
             Session.getInstance().login(account);
             if(account.getRoles().size() > 1){
                 Menu SelectRole = new Menu();
+                SelectRole.SetHasBack(false);
                 for (int i = 0;i< account.getRoles().size() ;i++){
                     var role = account.getRoles().get(i);
                     int index = i;

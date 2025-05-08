@@ -18,6 +18,9 @@ public class DashboardPage extends Page {
         mainMenu.addOption("Suggested Edit Lyrics" , options -> {
             Router.getInstance().navigate("Artist/Songs/SuggestEdit");
         });
+        mainMenu.addOption("My Albums" , options -> {
+            Router.getInstance().navigate("Artist/Albums");
+        });
         mainMenu.navigateMenu(super.getName());
     }
 }
